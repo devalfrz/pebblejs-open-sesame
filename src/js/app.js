@@ -12,6 +12,9 @@
  *
  */
 
+var lockitron_ip = '192.168.1.11'
+var lights_ip = '192.168.1.10';
+
 var UI = require('ui');
 var Vector2 = require('vector2');
 var ajax = require('ajax');
@@ -56,10 +59,10 @@ var goodBye = function(e){
   card.body('');
   card.show();
   applianceAction(
-    'http://192.168.1.72/arduino/',
+    'http://'+lockitron_ip+'/arduino/',
     'lock',
     applianceAction(
-      'http://192.168.1.67/arduino/',
+      'http://'+lights_ip+'/arduino/',
       'lights-off',
       function(e){
         card.subtitle('Locked!');
@@ -85,10 +88,10 @@ var welcome = function(e){
   card.body('');
   card.show();
   applianceAction(
-    'http://192.168.1.72/arduino/',
+    'http://'+lockitron_ip+'/arduino/',
     'arduino',
     applianceAction(
-      'http://192.168.1.67/arduino/',
+      'http://'+lights_ip+'/arduino/',
       'lights-on',
       function(e){
         card.subtitle('Unlocked!');
@@ -96,7 +99,7 @@ var welcome = function(e){
         card.show();
         window.setTimeout(function(e){
           applianceAction(
-            'http://192.168.1.72/arduino/',
+            'http://'+lockitron_ip+'/arduino/',
             'lock',
             function(e){
               card.subtitle("Locked!");
@@ -127,7 +130,7 @@ var toggleLights = function(e){
   card.subtitle('');
   card.show();
   applianceAction(
-    'http://192.168.1.67/arduino/',
+    'http://'+lights_ip+'/arduino/',
     'lights-toggle',
     function(e){
       e = (typeof(e) == 'string') ? JSON.parse(e) : e;
