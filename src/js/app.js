@@ -12,7 +12,7 @@
  *
  */
 
-var lockitron_ip = '192.168.1.11'
+var lockitron_ip = '192.168.1.11';
 var lights_ip = '192.168.1.10';
 
 var UI = require('ui');
