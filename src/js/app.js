@@ -22,34 +22,21 @@ var ajax = require('ajax');
 var main = new UI.Card({
   title: 'Open Sesame',
   body: 'Up = Open\nDown = Close\nSelect = Toggle Lights',
-  subtitleColor: 'indigo', // Named colors
-  bodyColor: '#9a0036' // Hex colors
+  subtitleColor: 'indigo',
+  bodyColor: '#9a0036'
 });
-
+main.on('click', 'down', function(e){goodBye(e)});
+main.on('click', 'up', function(e){welcome(e)});
+main.on('click', 'select', function(e){toggleLights(e)});
 main.show();
-main.on('click', 'down', function(e){
-  goodBye(e);
-});
-main.on('click', 'up', function(e){
-  welcome(e);
-});
-main.on('click', 'select', function(e){
-  toggleLights(e);
-});
 
 var card = new UI.Card({
-  subtitleColor: 'indigo', // Named colors
-  bodyColor: '#9a0036' // Hex colors
+  subtitleColor: 'indigo',
+  bodyColor: '#9a0036'
 });
-card.on('click', 'down', function(e){
-  goodBye(e);
-});
-card.on('click', 'up', function(e){
-  welcome(e);
-});
-card.on('click', 'select', function(e){
-  toggleLights(e);
-});
+card.on('click', 'down', function(e){goodBye(e)});
+card.on('click', 'up', function(e){welcome(e)});
+card.on('click', 'select', function(e){toggleLights(e)});
 
 
 
@@ -162,15 +149,3 @@ var applianceAction = function(url,action,successCallback,errorCallback){
   );
 
 }
-
-
-main.on('click', 'down', function(e){
-  goodBye(e);
-});
-main.on('click', 'up', function(e){
-  welcome(e);
-});
-main.on('click', 'select', function(e){
-  toggleLights(e);
-});
-
