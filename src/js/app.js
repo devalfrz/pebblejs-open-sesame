@@ -28,6 +28,7 @@ var main = new UI.Card({
 main.on('click', 'down', function(e){goodBye(e)});
 main.on('click', 'up', function(e){welcome(e)});
 main.on('click', 'select', function(e){toggleLights(e)});
+main.on('click', 'back', function(e){exitApp(e)});
 main.show();
 
 var card = new UI.Card({
@@ -37,8 +38,12 @@ var card = new UI.Card({
 card.on('click', 'down', function(e){goodBye(e)});
 card.on('click', 'up', function(e){welcome(e)});
 card.on('click', 'select', function(e){toggleLights(e)});
+card.on('click', 'back', function(e){exitApp(e)});
 
-
+var exitApp = function(e){
+  card.hide(); 
+  main.hide();
+}
 
 var goodBye = function(e){
   card.title('Good Bye!');
@@ -114,7 +119,8 @@ var welcome = function(e){
 
 var toggleLights = function(e){
   card.title('Toggle Lights');
-  card.subtitle('');
+  card.subtitle('...');
+  card.body('');
   card.show();
   applianceAction(
     'http://'+lights_ip+'/arduino/',
